@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Yahya Mukhtar Othman</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo" />
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="top-controls">
+      <button id="darkModeToggle" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">🌙</button>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle Navigation">☰</button>
+    </div>
+  </header>
+
+  <main class="about" id="about">
+    <h1>About Me</h1>
+    <p>
+      Hi, I'm <strong>Yahya Mukhtar Othman</strong>, a passionate UI/UX designer who thrives on creating intuitive and beautiful digital experiences.
+      I'm currently a 200-level ICT student at Northwest University, Kano, with a focus on user-centered design and clean web interfaces.
+      <br><br>
+      My mission is to help brands stand out with designs that are elegant, meaningful, and functional. I love solving problems and delivering user-first solutions that make digital products better and more human.
+    </p>
+  </main>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("navLinks");
+      const burger = document.getElementById("hamburger");
+      nav.classList.toggle("active");
+      burger.classList.toggle("open");
+      burger.textContent = burger.classList.contains("open") ? "✖" : "☰";
+    }
+
+    function toggleDarkMode() {
+      const body = document.body;
+      const toggle = document.getElementById("darkModeToggle");
+      body.classList.toggle("dark-mode");
+      toggle.textContent = body.classList.contains("dark-mode") ? "☀️" : "🌙";
+
+      const navLinks = document.querySelectorAll('.nav-links li a');
+      navLinks.forEach(link => {
+        if (body.classList.contains('dark-mode')) {
+          link.style.color = "var(--text-dark)";
+        } else {
+          link.style.color = "var(--text-light)";
+        }
+      });
+    }
+
+    // Highlight current page link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      if (link.href === window.location.href) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+</body>
+</html>
